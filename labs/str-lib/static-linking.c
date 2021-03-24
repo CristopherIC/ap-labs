@@ -10,9 +10,6 @@ int main(int argc,char **argv) {
     if(argc < 4){
         printf("Not enouht arguments\n");
     } else {
-        int size1 = mystrlen(argv[2]);
-        int size2 = mystrlen(argv[3]);
-
         if(strcmp(argv[1], "-add") == 0) {
             printf("Initial length\t: %d\n",mystrlen(argv[2]));
             char *outcome = mystradd(argv[2], argv[3]);
