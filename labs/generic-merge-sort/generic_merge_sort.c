@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h> 
 
 void mergeSort(char* [],int , int ,int (*comparator)(char *, char *));
 void merge(char* [],int , int ,int (*comparator)(char *, char *));
@@ -57,8 +59,43 @@ int main(int argc, char **argv) {
     fclose(file);
 
     mergeSort((void *)data,0,size-1,numbersFlag? intComparator:strComparator);
-    for (int i = 0; i < size; i++){
-        printf("%s", data[i]);
+    
+    if(numbersFlag == 1){
+        
+        char *report = "sorted_numbers";
+
+        int reportFile = open(report, O_WRONLY|O_CREAT|O_TRUNC, 0644);
+
+        if (reportFile < 0) {
+            printf("An error occurred during report generation"); 
+        } else {
+            char aux[100];
+            for (int i = 0; i < size; i++){
+                sprintf(aux,"%s",data[i]);
+                write(reportFile, aux, strlen(aux));
+            }
+            
+            close(reportFile);
+        }   
+
+
+    } else {
+        char *report = "sorted_strings";
+
+        int reportFile = open(report, O_WRONLY|O_CREAT|O_TRUNC, 0644);
+
+        if (reportFile < 0) {
+            printf("An error occurred during report generation"); 
+        } else {
+            char aux[100];
+            for (int i = 0; i < size; i++){
+                sprintf(aux,"%s",data[i]);
+                write(reportFile, aux, strlen(aux));
+            }
+            
+            close(reportFile);
+        }   
+
     }
 
 }
