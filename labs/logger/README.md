@@ -26,6 +26,13 @@ General instructions
 - Don't forget to handle errors properly.
 - Coding best practices implementation will be also considered.
 
+Building and running
+--------------------
+- gcc -c logger.c
+- gcc -c testLogger.c
+- gcc testLogger.o logger.o -o main
+- ./main
+
 How to submit your work
 =======================
 ```
