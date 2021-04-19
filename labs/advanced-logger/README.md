@@ -37,6 +37,17 @@ Build and Test automation is already implemented with the following command. Bel
 make test
 ```
 
+Building and running
+--------------------
+- gcc -c logger.c
+- gcc -c testLogger.c
+- gcc testLogger.o logger.o -o main
+- ./main
+- Or you can use: 
+```
+make test
+```
+
 How to submit your work
 =======================
 ```
